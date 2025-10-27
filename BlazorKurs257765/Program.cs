@@ -1,4 +1,5 @@
 using BlazorKurs257765.Components;
+using BlazorKurs257765.Components.Pages.Modul4;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-
+builder.Services.AddScoped<ToDoVM>();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
