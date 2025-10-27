@@ -1,0 +1,23 @@
+﻿@page "/navia"
+@page "/navib"
+@inject NavigationManager navigationManager
+<h3>Navi</h3>
+<a href="navia">A</a><br />
+<a href="navib">B</a>
+<br />
+<button class="btn btn-info" @onclick="B">navidiere B</button>
+
+@code {
+    //von Copilot vorgeschlagen
+    // [Inject]
+    // NavigationManager NavigationManager { get; set; }
+
+    void B()
+    {
+        navigationManager.NavigateTo("navib");
+        navigationManager.LocationChanged+= (sender, args) =>
+        {
+            Console.WriteLine($"Navigated to: {args.Location}");
+        };
+    }   
+}
