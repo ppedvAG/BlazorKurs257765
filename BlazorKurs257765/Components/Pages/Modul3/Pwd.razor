@@ -18,4 +18,27 @@
         localStorage.SetAsync("pwd",  Eingabe);
 
     }
+    //Load nur mit     <Routes @rendermode="@(new InteractiveServerRenderMode(prerender:false))" />
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var result = await localStorage.GetAsync<string>("pwd");
+    //     if (result.Success)
+    //     {
+    //         Eingabe = result.Value;
+    //     }
+    // }
+
+
+    protected override async  Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var result = await localStorage.GetAsync<string>("pwd");
+            if (result.Success)
+            {
+                Eingabe = result.Value;
+                StateHasChanged();
+            }
+        }
+    }
 }
