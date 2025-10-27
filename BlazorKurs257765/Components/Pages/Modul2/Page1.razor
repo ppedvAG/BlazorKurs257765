@@ -1,0 +1,11 @@
+﻿@page "/modul2/page1/{id}"
+@page "/page1"
+<h3>Page1</h3>
+
+<p style="color:@id">@i</p>
+
+@code {
+    [Parameter()]
+    public string id { get; set; }
+    int i = 1;
+}
