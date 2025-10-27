@@ -1,0 +1,29 @@
+﻿@page "/Attr"
+<h3 style="color:@farbe">Attr</h3>
+<input @bind="farbe" @bind:event="oninput" @ref="id1"/><br />
+<input @bind="farbe"  @oninput="hannes"/> geht eigentlich nicht <br />
+<input value="@farbe" @oninput="(_)=>farbe=_.Value?.ToString()" /> 
+<br />
+
+<div class="btn btn-outline-primary" @onclick="click1">click</div>
+<div class="btn btn-outline-danger" @onclick="(_)=>click2(_,1)">danger</div>
+
+@code {
+    ElementReference id1;
+    string farbe = "red";
+    void hannes()
+    {
+
+
+    }
+    void click1()
+    {
+        farbe = "blue";
+        id1.FocusAsync();
+    }
+    void click2(MouseEventArgs args, int anzahl)
+    {
+        farbe = "green";
+    }
+
+}
