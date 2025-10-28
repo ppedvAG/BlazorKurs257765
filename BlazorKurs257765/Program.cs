@@ -12,8 +12,13 @@ builder.Services.AddRazorComponents()
 builder.Services.AddScoped<ToDoVM>();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<ChatVM>();
-builder.Services.AddDbContext<NorthwindContext>(options =>
+//builder.Services.AddDbContext<NorthwindContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("Northwind")));
+builder.Services.AddDbContextFactory<NorthwindContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Northwind")));
+builder.Services.AddQuickGridEntityFrameworkAdapter();
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +27,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseMigrationsEndPoint();
 }
 
 app.UseHttpsRedirection();
