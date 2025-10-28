@@ -1,0 +1,36 @@
+﻿@using BlazorKurs257765.Models
+@typeparam ModelType
+
+
+
+@if (Items?.Any()??false)
+{
+  
+   @foreach (var item in Items)
+    {
+         @ItemContent(item)
+    }
+}
+else
+{
+    @EmptyItemContent
+
+}
+
+@code {
+    List<ModelType> Items;
+
+
+
+    [Parameter]
+    public RenderFragment<ModelType> ItemContent { get; set; }
+    [Parameter]
+    public RenderFragment EmptyItemContent { get; set; }
+
+    [Parameter]
+    public Func<List<ModelType>> SelectMethod { get; set; }
+    protected override void OnInitialized()
+    {
+        Items = SelectMethod?.Invoke();
+    }
+}
