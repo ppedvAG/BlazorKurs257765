@@ -1,0 +1,57 @@
+﻿@page "/p"
+@page "/personedit/{id:int}"
+
+<h3>PersonEdit</h3>
+<EditForm Model="VM" OnSubmit="save">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+
+            <InputTextAdhocPPEDV class="form-control" @bind-Value="VM.FirstName"></InputTextAdhocPPEDV>
+            <ValidationMessage For="() => VM.FirstName" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label  class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+           
+            <InputText class="form-control" @bind-Value="VM.FirstName"></InputText>
+            <ValidationMessage For="() => VM.FirstName"  />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Größe</label>
+        <div class="col-sm-10">
+
+            <InputNumber class="form-control" @bind-Value="VM.Gross" step="0.1"></InputNumber>
+            <ValidationMessage For="() => VM.Gross" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Geb Datum</label>
+        <div class="col-sm-10">
+
+            <InputDate class="form-control" @bind-Value="VM.GebDat" ></InputDate>
+            <ValidationMessage For="() => VM.GebDat" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <ValidationSummary></ValidationSummary>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    Person VM = new Person();
+    void save(EditContext ctx)
+    {
+        if (ctx.Validate())
+        {
+            
+        }
+        
+    }
+}
