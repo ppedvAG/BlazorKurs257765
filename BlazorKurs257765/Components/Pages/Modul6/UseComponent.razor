@@ -1,0 +1,17 @@
+﻿@page "/uc"
+<h3>UseComponent</h3>
+<CascadingValue Value="@("hannes")">
+    <CascadingValue Value="@("franz")" Name="franzparameter">
+    <Component Wert="42" Wert2="hannes" @ref="c1" style="font-size:42px" heigth="300">
+        <ItemContent><p>Ich bin ein INhalt<button>test</button></p></ItemContent>
+        <EmptyItemContent></EmptyItemContent>
+
+    </Component>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    Component c1;
+
+   
+}
