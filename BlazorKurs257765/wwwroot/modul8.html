@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <h1>Modul 8 - Blazor Server</h1>
+    <p>In diesem Modul lernen Sie die Grundlagen von Blazor Server kennen, einer Technologie zur Erstellung interaktiver Webanwendungen mit .NET.</p>
+    <script>
+
+        alert("Willkommen zum Modul 8 - Blazor Server!");
+        var x = confirm("Möchten Sie mehr über Blazor Server erfahren?");
+        document.getElementsByTagName("p")[0].innerHTML += "<br>Ihre Antwort: " + (x ? "Ja" : "Nein");
+        var name = prompt("Wie heißen Sie?");
+        document.getElementsByTagName("p")[0].innerHTML += "<br>Willkommen, " + name + "!";
+        document.title = "Modul 8 - Blazor Server für " + name;
+    </script>
+</body>
+</html>
