@@ -1,0 +1,27 @@
+﻿@page "/js"
+@inject IJSRuntime jsRuntime
+<h3>JS</h3>
+<button class="btn btn-primary" @onclick="zeigeAlert">Zeige Alert</button><br />
+<button class="btn btn-primary" @onclick="prompt">prompt</button><br/>
+
+@eingabe
+
+<script>
+    window.ppedv=function()
+    {
+        return prompt("Test2");
+    }
+</script>
+
+@code {
+    string eingabe;
+    void zeigeAlert()
+    {
+        jsRuntime.InvokeVoidAsync("alert", "Hallo aus Blazor");
+    }   
+     async Task prompt()
+    {
+        eingabe = await jsRuntime.InvokeAsync<string>("prompt", "titel");
+
+    }
+}
