@@ -1,0 +1,31 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<ModalPPEDV @ref="modal1" Title="Willkommen bei ppedv" OnSave="speichern">
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" @bind="Eingabe"
+                       placeholder="suchbegriff">
+                <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i> search</button>
+            </div>
+        </div>
+    </div>
+
+</ModalPPEDV>
+<button type="button" class="btn btn-primary" @onclick="anzeigen">
+    Launch demo modal
+</button>
+@code {
+    ModalPPEDV modal1;
+    String Eingabe;
+    void anzeigen()
+    {
+        modal1.Show();
+    }
+    void speichern()
+    {
+        Eingabe = "";
+        modal1.Show();
+    }
+
+}
