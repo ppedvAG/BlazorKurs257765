@@ -12,6 +12,7 @@ namespace BlazorKurs257765.Components.Pages.Modul5
         [Range(100, 250, ErrorMessage ="zwischen 100 und 250")]
         public int Gross { get; set; }
         [Required(ErrorMessage = "da muss was rein")]
-             public DateTime GebDat { get; set; }
+                 public DateTime GebDat { get; set; }
     }
 }
+//https://learn.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations?view=net-8.0 Validation Attributes
