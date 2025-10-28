@@ -3,6 +3,9 @@
 <h3>JS</h3>
 <button class="btn btn-primary" @onclick="zeigeAlert">Zeige Alert</button><br />
 <button class="btn btn-primary" @onclick="prompt">prompt</button><br/>
+<button class="btn btn-primary" @onclick="jsimport">JS Import</button>
+<br />
+
 
 @eingabe
 
@@ -21,7 +24,19 @@
     }   
      async Task prompt()
     {
-        eingabe = await jsRuntime.InvokeAsync<string>("prompt", "titel");
+        eingabe = await jsRuntime.InvokeAsync<string>("ppedv", "titel");
 
+    }
+    IJSObjectReference miniruntime;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+           miniruntime=await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./components/pages/modul8/js.razor.js");
+        }
+    }
+    async Task jsimport()
+    {
+      eingabe=await  miniruntime.InvokeAsync<string>("ppedvPrompt", "Hallo aus dem importierten JS-File");
     }
 }

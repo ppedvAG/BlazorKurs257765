@@ -1,0 +1,15 @@
+﻿@page "/js2"
+@using RazorClassLibrary1
+@inject IJSRuntime jsRuntime    
+
+<h3>JS2</h3>
+<button @onclick="CallJSInRCL" class="btn btn-primary">Call JS in RCL</button><br/>
+@ausgabe
+@code {
+    string ausgabe;
+    async Task CallJSInRCL()
+    {
+        var js = new ExampleJsInterop(jsRuntime);
+        ausgabe = await js.Prompt("Hallo aus BlazorJS2");
+    }
+}
