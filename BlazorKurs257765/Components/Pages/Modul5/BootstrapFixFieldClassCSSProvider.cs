@@ -8,6 +8,7 @@ namespace BlazorKurs257765.Components.Pages.Modul5
         {
             var isInvalid = editContext.GetValidationMessages(fieldIdentifier).Any();
             return  isInvalid ? "is-invalid" : "is-valid";
+
         }
     }
 }
